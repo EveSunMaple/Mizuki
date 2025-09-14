@@ -115,6 +115,7 @@ A modern, feature-rich static blog template built with [Astro](https://astro.bui
 - [x] **SEO optimization** including sitemaps and meta tags
 - [x] **Performance optimization** with lazy loading and caching
 - [x] **Comment system** with Twikoo integration
+- [x] **Automatic OG Image Generation** - Dynamically create beautiful Open Graph images for each post.
 
 ## 🚀 Quick Start
 
@@ -279,6 +280,34 @@ export const siteConfig: SiteConfig = {
 - **Friends Page:** Edit friend data in `src/content/spec/friends.md`
 - **Diary Page:** Edit moments in `src/pages/diary.astro`
 - **About Page:** Edit content in `src/content/spec/about.md`
+
+### 🖼️ OG Image Generation Configuration
+
+Mizuki now supports automatic generation of Open Graph (OG) images for each blog post, creating beautiful, shareable preview cards for social media.
+
+1. Enable/Disable the Feature:
+
+  You can toggle this feature on or off in src/config.ts:
+
+  ``` typescript
+    // src/config.ts
+    export const siteConfig: SiteConfig = {
+      // ...
+      generateOgImages: true, // Set to `true` to enable, `false` to disable
+      // ...
+    };
+  ```
+
+  This feature is enabled by default.
+
+2. Customize the Content:
+  The content of the OG image is pulled from your existing configuration (src/config.ts) and the post's frontmatter.
+  - Site Title: siteConfig.title
+  - Site Icon: The first icon specified in siteConfig.favicon.
+  - Theme Color: siteConfig.themeColor.hue determines the accent color used in the image.
+  - Author Name: profileConfig.name
+  - Author Avatar: profileConfig.avatar
+  - Post Title & Description: Pulled from the title and description fields in each post's frontmatter.
 
 ## ✏️ Contributing
 
